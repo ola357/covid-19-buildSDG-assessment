@@ -1,14 +1,55 @@
-const output = {
-  data: {}, // the input data you got
-  impact: {}, // your best case estimation
-  severeImpact: {} // your severe case estimation
+const convertDurationToDays = (periodType, timeToElapse) => {
+  if (periodType.toLowerCase() === 'days') {
+    return timeToElapse;
+  }
+  if (periodType.toLowerCase() === 'weeks') {
+    return timeToElapse * 7;
+  }
+  if (periodType.toLowerCase() === 'months') {
+    return timeToElapse * 30;
+  }
+  return -1;
 };
-const calculateFactor =(days)=>{
-    
-}
+const calculateFactor = (days) => {
+  if (days < 0) {
+    return -1;
+  }
+  return Math.trunc(days / 3);
+};
+console.log(calculateFactor(10));
+console.log(calculateFactor(convertDurationToDays('weeks', 4)));
+
+const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
+  return Math.trunc(infectionsByRequestedTime * 0.15);
+};
+
 const covid19ImpactEstimator = (input) => {
-  output.impact.currentlyInfected = input.reportedCases * 10;
-  output.severeImpact.currentlyInfected = input.reportedCases * 50;
+  // let {data, impact,severeImpact} = output;
+  let output = { data: {}, impact: {}, severeImpact: {} };
+  let { data, impact, severeImpact } = output;
+  let {
+    region,
+    periodType,
+    timeToElapse,
+    reportedCases,
+    population,
+    totalHospitalBeds
+  } = input;
+
+  impact.currentlyInfected = reportedCases * 10;
+  impact.infectionsByRequestedTime =
+    impact.currentlyInfected *
+    2 ** calculateFactor(convertDurationToDays(periodType, timeToElapse));
+  impact.severeCasesByRequestedTime = evaluateSevereCasesByRequestedTime(
+    impact.infectionsByRequestedTime
+  );
+  severeImpact.currentlyInfected = reportedCases * 50;
+  severeImpact.infectionsByRequestedTime =
+    severeImpact.currentlyInfected *
+    2 ** calculateFactor(convertDurationToDays(periodType, timeToElapse));
+  severeImpact.severeCasesByRequestedTime = evaluateSevereCasesByRequestedTime(
+    severeImpact.infectionsByRequestedTime
+  );
   output.data = input;
   console.log(output);
   return output;
