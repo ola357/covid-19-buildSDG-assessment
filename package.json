@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "lint": "eslint ./src/",
-    "start": "npm run build &&nodemon dist/server/app.js",
+    "start": "npm run build &&node dist/server/app.js",
     "build": "npm run clean &&babel src --out-dir dist",
     "clean": "rm -rf dist"
   },

@@ -16,12 +16,12 @@ const calculateFactor = (days) => {
   }
   return Math.trunc(days / 3);
 };
-console.log(calculateFactor(10));
-console.log(calculateFactor(convertDurationToDays('weeks', 4)));
+
 
 const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
   return Math.trunc(infectionsByRequestedTime * 0.15);
 };
+
 
 const hospitalBedsByRequestedTime = (
   totalHospitalBeds,
@@ -29,7 +29,7 @@ const hospitalBedsByRequestedTime = (
 ) => {
   return Math.trunc(0.35 * totalHospitalBeds) - severeCasesByRequestedTime;
 };
-//console.log(hospitalBedsByRequestedTime(10, 10));
+
 
 const dollarsInFlight = (
   infectionsByRequestedTime,
@@ -105,11 +105,11 @@ const covid19ImpactEstimator = (input) => {
     timeToElapse
   );
   output.data = input;
-  console.log(output);
+  //console.log(output);
 
   return output;
 };
-
+/* 
 const data = {
   region: {
     name: 'Africa',
@@ -136,8 +136,9 @@ const sample = {
   population: 92931687,
   totalHospitalBeds: 678874
 };
-covid19ImpactEstimator(data);
+ */
+/* covid19ImpactEstimator(data);
 console.log('##############################');
 console.log(covid19ImpactEstimator(sample));
-console.log('##############################');
+console.log('##############################'); */
 export default covid19ImpactEstimator;
