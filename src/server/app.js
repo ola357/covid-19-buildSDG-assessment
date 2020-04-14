@@ -13,15 +13,16 @@ const app = express();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan('common',{stream: winston.stream}));
 //app.use(morgan('tiny', { stream: accessLogStream }));
 
 //app.use(morgan('dev', { stream: accessLogStream }));
 
 app.use('/api/v1/on-covid-19', routes);
-app.use(morgan('dev'));
-app.use(morgan('combined'
+//app.use(morgan('dev'));
+//app.use(morgan('combined'
 //, { stream: winston.stream }
-));
+//));
 /* const logger = winston.createLogger({
     transports: [
         new winston.transports.File({
@@ -35,7 +36,9 @@ app.use(morgan('combined'
     ]
 }); */
 
-
+app.get('/',(req, res)=>{
+    res.send("andela build sdg challenge");
+});
 const port = process.env.PORT || 5000;
 
 const server = app.listen(port, () => console.log(`Listening on port ${port}...`));

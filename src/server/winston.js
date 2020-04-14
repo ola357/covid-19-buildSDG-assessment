@@ -5,7 +5,7 @@ const options = {
       level: 'info',
       filename: `${appRoot}/app.log`,
       handleExceptions: true,
-      json: true,
+      json: false,
       maxsize: 5242880, // 5MB
       maxFiles: 5,
       colorize: false,
@@ -24,6 +24,7 @@ const options = {
     ],
     exitOnError: false, // do not exit on handled exceptions
   });
+  
   logger.stream = {
     write: (message, encoding)=> {
       logger.info(message);
