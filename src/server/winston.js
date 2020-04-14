@@ -20,15 +20,14 @@ const options = {
 };
 const logger = createLogger({
   transports: [
-    transports.File(options.file),
-    transports.Console(options.console)
+    new transports.File(options.file),
+    new transports.Console(options.console)
   ],
   exitOnError: false // do not exit on handled exceptions
 });
 
 logger.stream = {
   write: (message) => {
-    
     logger.info(message);
   }
 };
