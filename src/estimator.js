@@ -17,8 +17,10 @@ const calculateFactor = (days) => {
   return Math.trunc(days / 3);
 };
 
-const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) 
-  => Math.trunc(infectionsByRequestedTime * 0.15);
+const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
+  const proxy = infectionsByRequestedTime * 1;
+  return Math.trunc(proxy * 0.15);
+};
 
 const hospitalBedsByRequestedTime = (
   totalHospitalBeds,

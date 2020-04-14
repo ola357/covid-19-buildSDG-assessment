@@ -7,8 +7,8 @@
   "scripts": {
     "lint": "eslint ./src/",
     "lint1": "eslint --fix ./src/",
-    "start": "npm run build &&node dist/server/app.js",
-    "build": "npm run clean &&babel src --out-dir dist",
+    "start": "node dist/server/app.js",
+    "build": "babel src --out-dir dist",
     "clean": "rm -rf dist"
   },
   "engines": {
