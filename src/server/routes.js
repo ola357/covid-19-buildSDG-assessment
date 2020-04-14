@@ -46,12 +46,11 @@ router.get('/logs', (req, res) => {
   let result;
   try {
     result = fs.readFileSync(`${appRoot}/app.log`, 'utf8');
-        
-} catch(e) {
+  } catch (e) {
     console.log('Error:', e.stack);
-    res.status(401).send({error: e});
-}
-  
+    res.status(401).send({ error: e });
+  }
+
   res.send(result);
 });
 export default router;
