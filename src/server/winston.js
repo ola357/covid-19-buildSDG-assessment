@@ -1,5 +1,5 @@
 import appRoot from 'app-root-path';
-import winston from 'winston';
+import { createLogger, transports } from 'winston';
 
 const options = {
   file: {
@@ -18,16 +18,17 @@ const options = {
     colorize: true
   }
 };
-const logger = new winston.createLogger({
+const logger = createLogger({
   transports: [
-    new winston.transports.File(options.file),
-    new winston.transports.Console(options.console)
+    transports.File(options.file),
+    transports.Console(options.console)
   ],
   exitOnError: false // do not exit on handled exceptions
 });
 
 logger.stream = {
-  write: (message, encoding) => {
+  write: (message) => {
+    
     logger.info(message);
   }
 };

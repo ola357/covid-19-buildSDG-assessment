@@ -47,7 +47,6 @@ router.get('/logs', (req, res) => {
   try {
     result = fs.readFileSync(`${appRoot}/app.log`, 'utf8');
   } catch (e) {
-    console.log('Error:', e.stack);
     res.status(401).send({ error: e });
   }
 
