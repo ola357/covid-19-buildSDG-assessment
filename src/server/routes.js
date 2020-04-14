@@ -3,11 +3,11 @@ import xml from 'xml2js';
 import fs from 'fs';
 import appRoot from 'app-root-path';
 import covid19ImpactEstimator from '../estimator';
+
 const router = express.Router();
 const builder = new xml.Builder();
 
 router.get('/', (req, res) => {
-  // console.log(res.baseUrl);
   res.send({
     message: 'andela build for SDGs challenge'
   });

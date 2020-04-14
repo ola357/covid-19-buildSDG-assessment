@@ -17,8 +17,7 @@ const calculateFactor = (days) => {
   return Math.trunc(days / 3);
 };
 
-const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) =>
-  Math.trunc(infectionsByRequestedTime * 0.15);
+const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) => Math.trunc(infectionsByRequestedTime * 0.15);
 
 const hospitalBedsByRequestedTime = (
   totalHospitalBeds,
@@ -32,11 +31,10 @@ const dollarsInFlight = (
   periodType,
   timeToElapse
 ) => {
-  const result =
-    (infectionsByRequestedTime *
-      avgDailyIncomePopulation *
-      avgDailyIncomeInUSD) /
-    convertDurationToDays(periodType, timeToElapse);
+  const result = (infectionsByRequestedTime
+      * avgDailyIncomePopulation
+      * avgDailyIncomeInUSD)
+    / convertDurationToDays(periodType, timeToElapse);
   return Math.trunc(result);
 };
 const covid19ImpactEstimator = (input) => {
@@ -47,15 +45,13 @@ const covid19ImpactEstimator = (input) => {
     periodType,
     timeToElapse,
     reportedCases,
-    population,
     totalHospitalBeds
   } = input;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = region;
   // challenge 1
   impact.currentlyInfected = reportedCases * 10;
-  impact.infectionsByRequestedTime =
-    impact.currentlyInfected *
-    2 ** calculateFactor(convertDurationToDays(periodType, timeToElapse));
+  impact.infectionsByRequestedTime = impact.currentlyInfected
+    * 2 ** calculateFactor(convertDurationToDays(periodType, timeToElapse));
   // challenge 2
   impact.severeCasesByRequestedTime = evaluateSevereCasesByRequestedTime(
     impact.infectionsByRequestedTime
@@ -80,9 +76,8 @@ const covid19ImpactEstimator = (input) => {
   );
   // challenge 1
   severeImpact.currentlyInfected = reportedCases * 50;
-  severeImpact.infectionsByRequestedTime =
-    severeImpact.currentlyInfected *
-    2 ** calculateFactor(convertDurationToDays(periodType, timeToElapse));
+  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
+    * 2 ** calculateFactor(convertDurationToDays(periodType, timeToElapse));
   severeImpact.severeCasesByRequestedTime = evaluateSevereCasesByRequestedTime(
     severeImpact.infectionsByRequestedTime
   );

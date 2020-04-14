@@ -1,5 +1,6 @@
 import appRoot from 'app-root-path';
 import winston from 'winston';
+
 const options = {
   file: {
     level: 'info',
