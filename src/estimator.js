@@ -17,16 +17,13 @@ const calculateFactor = (days) => {
   return Math.trunc(days / 3);
 };
 
-const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
-  return Math.trunc(infectionsByRequestedTime * 0.15);
-};
+const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) =>
+  Math.trunc(infectionsByRequestedTime * 0.15);
 
 const hospitalBedsByRequestedTime = (
   totalHospitalBeds,
   severeCasesByRequestedTime
-) => {
-  return Math.trunc(0.35 * totalHospitalBeds) - severeCasesByRequestedTime;
-};
+) => Math.trunc(0.35 * totalHospitalBeds) - severeCasesByRequestedTime;
 
 const dollarsInFlight = (
   infectionsByRequestedTime,
@@ -43,9 +40,9 @@ const dollarsInFlight = (
   return Math.trunc(result);
 };
 const covid19ImpactEstimator = (input) => {
-  let output = { data: {}, impact: {}, severeImpact: {} };
-  let { impact, severeImpact } = output;
-  let {
+  const output = { data: {}, impact: {}, severeImpact: {} };
+  const { impact, severeImpact } = output;
+  const {
     region,
     periodType,
     timeToElapse,
@@ -108,40 +105,8 @@ const covid19ImpactEstimator = (input) => {
     timeToElapse
   );
   output.data = input;
-  //console.log(output);
 
   return output;
 };
-/* 
-const data = {
-  region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
-  },
-  periodType: 'days',
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
-};
-const sample = {
-  region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 4,
-    avgDailyIncomePopulation: 0.73
-  },
-  periodType: 'days',
-  timeToElapse: 38,
-  reportedCases: 2747,
-  population: 92931687,
-  totalHospitalBeds: 678874
-};
- */
-/* covid19ImpactEstimator(data);
-console.log('##############################');
-console.log(covid19ImpactEstimator(sample));
-console.log('##############################'); */
+
 export default covid19ImpactEstimator;
