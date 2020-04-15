@@ -38,7 +38,7 @@ router.post('/xml', (req, res) => {
   } catch (error) {
     res.send({ errormessage: error });
   }
-  res.set('Content-Type', 'text/xml');
+  res.set('Content-Type', 'application/xml');
   res.type('xml');
   res.send(xml(result));
 });
@@ -50,7 +50,6 @@ router.get('/logs', (req, res) => {
     res.status(401).send({ error: e });
   }
   res.set('Content-Type', 'text/plain');
-  res.type('text');
   res.send(result);
 });
 export default router;
