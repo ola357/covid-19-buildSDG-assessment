@@ -49,7 +49,7 @@ router.get('/logs', (req, res) => {
   } catch (e) {
     res.status(401).send({ error: e });
   }
-  res.setHeader('Content-Type','text/plain');
+  res.setHeader('Content-Type', 'text/plain');
   res.send(result);
 });
 export default router;
