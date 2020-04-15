@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import fs from 'fs';
 import path from 'path';
 import approot from 'app-root-path';
-import log from 'winston';
+import winston from 'winston';
 import routes from './routes';
 
 const app = express();
@@ -28,5 +28,5 @@ app.get('/', (req, res) => {
 });
 const port = process.env.PORT || 5000;
 
-const server = app.listen(port, () => log.info(`Listening on port ${port}...`));
+const server = app.listen(port, () => winston.info(`Listening on port ${port}...`));
 export default server;
