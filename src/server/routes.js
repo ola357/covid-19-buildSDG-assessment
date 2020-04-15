@@ -1,11 +1,10 @@
 import express from 'express';
-import xml from 'xml2js';
+import xml from 'xml';
 import fs from 'fs';
 import appRoot from 'app-root-path';
 import covid19ImpactEstimator from '../estimator';
 
 const router = express.Router();
-const builder = new xml.Builder();
 
 router.get('/', (req, res) => {
   res.send({
@@ -40,7 +39,7 @@ router.post('/xml', (req, res) => {
     res.send({ errormessage: error });
   }
   res.set('Content-Type', 'text/xml');
-  res.send(builder.buildObject(result));
+  res.send(xml(result));
 });
 router.get('/logs', (req, res) => {
   let result;
@@ -49,7 +48,7 @@ router.get('/logs', (req, res) => {
   } catch (e) {
     res.status(401).send({ error: e });
   }
-
+  res.set('Content-Type', 'text/plain');
   res.send(result);
 });
 export default router;
