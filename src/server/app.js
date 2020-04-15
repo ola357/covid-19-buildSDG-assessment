@@ -8,7 +8,7 @@ import log from 'winston';
 import routes from './routes';
 
 const app = express();
-const format = ':method\t:url\t:status\t:response-time[0]ms';
+const format = ':method\t\t:url\t\t:status\t\t:response-time[0]ms\n';
 const logStream = fs.createWriteStream(
   path.join(`${approot}`, 'app.log'),
   {
