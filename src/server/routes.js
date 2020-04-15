@@ -45,7 +45,7 @@ router.post('/xml', (req, res) => {
 router.get('/logs', (req, res) => {
   let result;
   try {
-    result = fs.readFileSync(`${appRoot}/app.log`, 'utf8');
+    result ='' + fs.readFileSync(`${appRoot}/app.log`, 'utf8');
   } catch (e) {
     res.status(401).send({ error: e });
   }
