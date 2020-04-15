@@ -25,7 +25,7 @@ const evaluateSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
 const hospitalBedsByRequestedTime = (
   totalHospitalBeds,
   severeCasesByRequestedTime
-) => Math.trunc(0.35 * totalHospitalBeds) - severeCasesByRequestedTime;
+) => Math.trunc((0.35 * totalHospitalBeds) - severeCasesByRequestedTime);
 
 const dollarsInFlight = (
   infectionsByRequestedTime,
