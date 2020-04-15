@@ -50,7 +50,7 @@ router.get('/logs', (req, res) => {
     res.status(401).send({ error: e });
   }
   res.set('Content-Type', 'text/plain');
-  res.type('text/plain');
+  res.header('Content-type', 'text/plain');
   res.send(result);
 });
 export default router;
