@@ -4,11 +4,11 @@ import bodyParser from 'body-parser';
 import fs from 'fs';
 import path from 'path';
 import approot from 'app-root-path';
-import winston from 'winston';
 import routes from './routes';
+import winston from './winston';
 
 const app = express();
-const format = ':method\t\t:url\t\t:status\t\t:response-time[0]ms\r\n';
+const format = ':method\t\t:url\t\t:status\t\t:response-time[0]ms\r';
 const logStream = fs.createWriteStream(
   path.join(`${approot}`, 'app.log'),
   {

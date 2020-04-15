@@ -12,7 +12,7 @@ const options = {
     colorize: false
   },
   console: {
-    level: 'debug',
+    level: 'info',
     handleExceptions: true,
     json: false,
     colorize: true
@@ -20,7 +20,7 @@ const options = {
 };
 const logger = createLogger({
   transports: [
-    new transports.File(options.file),
+    // new transports.File(options.file),
     new transports.Console(options.console)
   ],
   exitOnError: false // do not exit on handled exceptions
