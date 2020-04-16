@@ -18,8 +18,8 @@ const logStream = fs.createWriteStream(
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(morgan(format, { stream: logStream }));
 app.use(morgan(format));
+app.use(morgan(format, { stream: logStream }));
 
 app.use('/api/v1/on-covid-19', routes);
 

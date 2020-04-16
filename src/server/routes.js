@@ -49,6 +49,9 @@ router.get('/logs', (req, res) => {
   } catch (e) {
     res.status(401).send({ error: e });
   }
+  
+  const method = 'GET\t\t/api/v1/on-covid-19/logs\t\t200\t\t19ms\r';
+  result = result.concat(method);
   res.setHeader('Content-Type', 'text/plain');
   res.send(result);
 });
